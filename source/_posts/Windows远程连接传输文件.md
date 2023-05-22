@@ -1,7 +1,7 @@
 ---
 title: Windows 远程连接传输文件
 tags: [Windows, 远程桌面]
-category: [Windows]
+categories: [Windows]
 category_bar: [Windows]
 date: 2023-05-17 17:06:29
 ---
