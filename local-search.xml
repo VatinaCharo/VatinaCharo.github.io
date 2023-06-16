@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>VSCodeJupyter的交互式绘图配置</title>
+    <link href="/2023/06/16/VSCodeJupyter%E7%9A%84%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE%E9%85%8D%E7%BD%AE/"/>
+    <url>/2023/06/16/VSCodeJupyter%E7%9A%84%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h1id="vscodejupyter的交互式绘图配置">VSCodeJupyter的交互式绘图配置</h1><h2 id="安装支持库">安装支持库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install ipympl<br></code></pre></td></tr></table></figure><p>安装完成后需要重启Jupyter服务</p><h2 id="vscode使用">VSCode使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">%matplotlib widget <span class="hljs-comment"># 切换 matplotlib 的绘图后端为 ipympl</span><br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br></code></pre></td></tr></table></figure><h2 id="demo">Demo</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">%matplotlib widget<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">time = [<span class="hljs-number">0</span>, <span class="hljs-number">180</span>, <span class="hljs-number">240</span>, <span class="hljs-number">360</span>, <span class="hljs-number">390</span>]<br>plt.figure()<br>plt.plot(time,[<span class="hljs-number">0</span>, <span class="hljs-number">15</span>, <span class="hljs-number">15</span>, <span class="hljs-number">23</span>, <span class="hljs-number">23</span>])<br>plt.xticks([<span class="hljs-number">180</span>, <span class="hljs-number">240</span>, <span class="hljs-number">360</span>, <span class="hljs-number">390</span>], [<span class="hljs-string">&quot;3:00&quot;</span>,<span class="hljs-string">&quot;4:00&quot;</span>,<span class="hljs-string">&quot;6:00&quot;</span>,<span class="hljs-string">&quot;6:30&quot;</span>])<br>plt.title(<span class="hljs-string">&quot;Before Deposition&quot;</span>)<br>plt.ylabel(<span class="hljs-string">&quot;Power&quot;</span>)<br>plt.xlabel(<span class="hljs-string">&quot;Time&quot;</span>)<br></code></pre></td></tr></table></figure><figure><img src="/img/md/image-20230616183028835.png"alt="image-20230616183028835" /><figcaption aria-hidden="true">image-20230616183028835</figcaption></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">time = [<span class="hljs-number">0</span>, <span class="hljs-number">30</span>, <span class="hljs-number">50</span>, <span class="hljs-number">60</span>]<br>plt.figure()<br>plt.plot(time,[<span class="hljs-number">23</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span>])<br>plt.xticks([<span class="hljs-number">30</span>, <span class="hljs-number">50</span>, <span class="hljs-number">60</span>], [<span class="hljs-string">&quot;0:30&quot;</span>,<span class="hljs-string">&quot;0:50&quot;</span>,<span class="hljs-string">&quot;1:00&quot;</span>])<br>plt.title(<span class="hljs-string">&quot;After Deposition&quot;</span>)<br>plt.ylabel(<span class="hljs-string">&quot;Power&quot;</span>)<br>plt.xlabel(<span class="hljs-string">&quot;Time&quot;</span>)<br></code></pre></td></tr></table></figure><figure><img src="/img/md/image-20230616183059631.png"alt="image-20230616183059631" /><figcaption aria-hidden="true">image-20230616183059631</figcaption></figure><h2 id="注意事项">注意事项</h2><p>每次绘图时需要多加一行代码，用于创建一个新的画布</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">plt.figure()<br></code></pre></td></tr></table></figure><p>如果不新建画布，会导致不同cell之间的plt绘图共用同一张画布</p><p><em>也可以使用ax的方式绘图</em></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Code</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>Jupyter</tag>
+      
+      <tag>Matplotlib</tag>
+      
+      <tag>ipympl</tag>
+      
+      <tag>VSCode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>超导量子计算常用物理常数</title>
     <link href="/2023/05/21/%E8%B6%85%E5%AF%BC%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97%E5%B8%B8%E7%94%A8%E7%89%A9%E7%90%86%E5%B8%B8%E6%95%B0/"/>
     <url>/2023/05/21/%E8%B6%85%E5%AF%BC%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97%E5%B8%B8%E7%94%A8%E7%89%A9%E7%90%86%E5%B8%B8%E6%95%B0/</url>

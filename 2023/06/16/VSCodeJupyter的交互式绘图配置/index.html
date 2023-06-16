@@ -16,13 +16,13 @@
   <meta name="author" content="Eur3ka">
   <meta name="keywords" content="Physics Qubit Python">
   
-    <meta name="description" content="Gradle Application插件自定义打包 目标需求  启动脚本中添加指定内容 zip中添加指定文件  实现 启动脚本中添加指定内容 在PTAssist项目的开发中，我们基于kotlin语言开发javafx程序，并通过gradle来进行依赖管理，最终我们使用Application插件的distZip进行项目打包，这会自动生成一个目录结构如下所示的zip文件 123456">
+    <meta name="description" content="VSCodeJupyter的交互式绘图配置 安装支持库 1pip install ipympl 安装完成后需要重启Jupyter服务 VSCode使用 12%matplotlib widget # 切换 matplotlib 的绘图后端为 ipymplimport matplotlib.pyplot as plt Demo 12%matplotlib widgetimport mat">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Gradle Application插件自定义打包 - Eur3ka&#39;s Blog</title>
+  <title>VSCodeJupyter的交互式绘图配置 - Eur3ka&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Gradle Application插件自定义打包"></span>
+            <span id="subtitle" data-typed-text="VSCodeJupyter的交互式绘图配置"></span>
           
         </div>
 
@@ -216,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-17 16:45" pubdate>
-          2023-05-17 16:45:16
+        <time datetime="2023-06-16 18:45" pubdate>
+          2023-06-16 18:45:31
         </time>
       </span>
     
@@ -229,7 +229,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.3k 字
+          824 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
           <!-- compatible with older versions-->
-          14 分钟
+          10 分钟
         
       </span>
     
@@ -315,7 +315,7 @@
       
         <a href="/2023/06/16/VSCodeJupyter%E7%9A%84%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE%E9%85%8D%E7%BD%AE/" title="VSCodeJupyter的交互式绘图配置"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">VSCodeJupyter的交互式绘图配置</span>
         </a>
       
@@ -324,7 +324,7 @@
       
         <a href="/2023/05/17/Gradle%20Application%E6%8F%92%E4%BB%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%93%E5%8C%85/" title="Gradle Application插件自定义打包"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">Gradle Application插件自定义打包</span>
         </a>
       
@@ -348,7 +348,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Gradle Application插件自定义打包</h1>
+            <h1 style="display: none">VSCodeJupyter的交互式绘图配置</h1>
             
               <p class="note note-info">
                 
@@ -361,37 +361,32 @@
             
               <div class="markdown-body">
                 
-                <h1 id="gradle-application插件自定义打包">Gradle
-Application插件自定义打包</h1>
-<h2 id="目标需求">目标需求</h2>
-<ol type="1">
-<li>启动脚本中添加指定内容</li>
-<li>zip中添加指定文件</li>
-</ol>
-<h2 id="实现">实现</h2>
-<h3 id="启动脚本中添加指定内容">启动脚本中添加指定内容</h3>
-<p>在PTAssist项目的开发中，我们基于kotlin语言开发javafx程序，并通过gradle来进行依赖管理，最终我们使用Application插件的distZip进行项目打包，这会自动生成一个目录结构如下所示的zip文件</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">xxx.zip<br>    |- xxx<br>        |- bin<br>            |- xxx<br>            |- xxx.bat<br>        |- lib<br>            |- aaa.jar<br>            ...<br>            |- nnn.jar<br></code></pre></td></tr></table></figure>
-<p>其中 <code>bin</code> 目录下是对应的启动脚本， <code>lib</code>
-目录下是程序jar包</p>
-<p>插件默认提供的启动脚本中没有pause命令，所以如果程序出现什么无法启动的错误，就会出现cmd一闪而过的问题，很难排查错误，也不利于用户使用</p>
-<p>于是我们需要在打包的过程中，往启动脚本中注入一行pause</p>
-<p>我们发现，可以通过修改application插件提供的startScripts的Task来手动注入一行pause</p>
-<p>具体代码如下：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Groovy">tasks.startScripts &#123;<br>    doLast &#123;<br>        <span class="hljs-keyword">def</span> windowsScriptFile = getWindowsScript()<br>        windowsScriptFile.text = windowsScriptFile.text.replace(<span class="hljs-string">&quot;\n:end&quot;</span>, <span class="hljs-string">&quot;pause\n\n:end&quot;</span>)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="zip中添加指定文件">zip中添加指定文件</h3>
-<p>我们的项目需要在打包时加入一个README.md作为用户的使用说明文件</p>
-<p>我们这里采用的是修改distribution插件的配置，因为application插件会自动应用此插件，所以其实可以通过distribution插件的配置来控制application插件的打包内容</p>
-<p>由于默认使用的是 <code>Groovy</code> 的gradle配置文件，所以可以通过
-<code>Groovy</code>
-脚本语言提供的功能来自定义的添加需要被打包进入zip的文件或者文件夹</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Groovy"><span class="hljs-comment">// 打包时加入README.md</span><br><br>distributions &#123;<br>    main &#123;<br>        contents &#123;<br>            from parent.file(<span class="hljs-string">&#x27;README_Client.md&#x27;</span>)<br>            parent.file(<span class="hljs-string">&quot;assets&quot;</span>).listFiles().each &#123;<br>                from(it) &#123;<br>                    into <span class="hljs-string">&quot;assets&quot;</span><br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>这里通过 <code>parent</code> 获取到了模块对应的项目根目录，然后
-<code>assets</code>
-存放的是readme文件所需的图片，所以也需要一并打包进去。</p>
-<p>做完之后，个人觉得，如果最开始采用的是基于kotlin语言的
-<code>bulid.gradle</code>
-，那么写这些配置可能会简单一些，而且应该会有比较好的补全。（idea默认不会补全build.gradle里面的groovy的语法，有点蛋疼）</p>
+                <h1
+id="vscodejupyter的交互式绘图配置">VSCodeJupyter的交互式绘图配置</h1>
+<h2 id="安装支持库">安装支持库</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install ipympl<br></code></pre></td></tr></table></figure>
+<p>安装完成后需要重启Jupyter服务</p>
+<h2 id="vscode使用">VSCode使用</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">%matplotlib widget <span class="hljs-comment"># 切换 matplotlib 的绘图后端为 ipympl</span><br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br></code></pre></td></tr></table></figure>
+<h2 id="demo">Demo</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">%matplotlib widget<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">time = [<span class="hljs-number">0</span>, <span class="hljs-number">180</span>, <span class="hljs-number">240</span>, <span class="hljs-number">360</span>, <span class="hljs-number">390</span>]<br>plt.figure()<br>plt.plot(time,[<span class="hljs-number">0</span>, <span class="hljs-number">15</span>, <span class="hljs-number">15</span>, <span class="hljs-number">23</span>, <span class="hljs-number">23</span>])<br>plt.xticks([<span class="hljs-number">180</span>, <span class="hljs-number">240</span>, <span class="hljs-number">360</span>, <span class="hljs-number">390</span>], [<span class="hljs-string">&quot;3:00&quot;</span>,<span class="hljs-string">&quot;4:00&quot;</span>,<span class="hljs-string">&quot;6:00&quot;</span>,<span class="hljs-string">&quot;6:30&quot;</span>])<br>plt.title(<span class="hljs-string">&quot;Before Deposition&quot;</span>)<br>plt.ylabel(<span class="hljs-string">&quot;Power&quot;</span>)<br>plt.xlabel(<span class="hljs-string">&quot;Time&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/img/md/image-20230616183028835.png" srcset="/img/loading.gif" lazyload
+alt="image-20230616183028835" />
+<figcaption aria-hidden="true">image-20230616183028835</figcaption>
+</figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">time = [<span class="hljs-number">0</span>, <span class="hljs-number">30</span>, <span class="hljs-number">50</span>, <span class="hljs-number">60</span>]<br>plt.figure()<br>plt.plot(time,[<span class="hljs-number">23</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span>])<br>plt.xticks([<span class="hljs-number">30</span>, <span class="hljs-number">50</span>, <span class="hljs-number">60</span>], [<span class="hljs-string">&quot;0:30&quot;</span>,<span class="hljs-string">&quot;0:50&quot;</span>,<span class="hljs-string">&quot;1:00&quot;</span>])<br>plt.title(<span class="hljs-string">&quot;After Deposition&quot;</span>)<br>plt.ylabel(<span class="hljs-string">&quot;Power&quot;</span>)<br>plt.xlabel(<span class="hljs-string">&quot;Time&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/img/md/image-20230616183059631.png" srcset="/img/loading.gif" lazyload
+alt="image-20230616183059631" />
+<figcaption aria-hidden="true">image-20230616183059631</figcaption>
+</figure>
+<h2 id="注意事项">注意事项</h2>
+<p>每次绘图时需要多加一行代码，用于创建一个新的画布</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">plt.figure()<br></code></pre></td></tr></table></figure>
+<p>如果不新建画布，会导致不同cell之间的plt绘图共用同一张画布</p>
+<p><em>也可以使用ax的方式绘图</em></p>
 
                 
               </div>
@@ -425,7 +420,15 @@ Application插件自定义打包</h1>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Gradle/">#Gradle</a>
+        <a href="/tags/Python/">#Python</a>
+      
+        <a href="/tags/Jupyter/">#Jupyter</a>
+      
+        <a href="/tags/Matplotlib/">#Matplotlib</a>
+      
+        <a href="/tags/ipympl/">#ipympl</a>
+      
+        <a href="/tags/VSCode/">#VSCode</a>
       
     </div>
   
@@ -437,8 +440,8 @@ Application插件自定义打包</h1>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Gradle Application插件自定义打包</div>
-      <div>https://vatinacharo.github.io/2023/05/17/Gradle Application插件自定义打包/</div>
+      <div>VSCodeJupyter的交互式绘图配置</div>
+      <div>https://vatinacharo.github.io/2023/06/16/VSCodeJupyter的交互式绘图配置/</div>
     </div>
     <div class="license-meta">
       
@@ -450,7 +453,7 @@ Application插件自定义打包</h1>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年5月17日</div>
+          <div>2023年6月16日</div>
         </div>
       
       
@@ -488,18 +491,12 @@ Application插件自定义打包</h1>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/17/Windows%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6/" title="Windows 远程连接传输文件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Windows 远程连接传输文件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/17/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2023/05/21/%E8%B6%85%E5%AF%BC%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97%E5%B8%B8%E7%94%A8%E7%89%A9%E7%90%86%E5%B8%B8%E6%95%B0/" title="超导量子计算常用物理常数">
+                        <span class="hidden-mobile">超导量子计算常用物理常数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -522,7 +519,7 @@ Application插件自定义打包</h1>
         var options = Object.assign(
           {"clientID":"320f24c68ad315fd8a0a","clientSecret":"15eaf7ac075b57a505e209326f35397432e6a338","repo":"VatinaCharo.github.io","owner":"VatinaCharo","admin":["VatinaCharo"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: '04bfb13a6131ee7426321418a22def10'
+            id: '28456d98669f6a0951bc2280b0a03abd'
           }
         )
         var gitalk = new Gitalk(options);
