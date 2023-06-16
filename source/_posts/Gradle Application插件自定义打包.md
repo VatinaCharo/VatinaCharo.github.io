@@ -4,6 +4,7 @@ tags: [Gradle]
 categories: [Code]
 category_bar: [Code]
 date: 2023-05-17 16:45:16
+typora-root-url: ..
 ---
 
 # Gradle Application插件自定义打包

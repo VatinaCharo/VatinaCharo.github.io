@@ -4,6 +4,7 @@ tags: [Windows, 远程桌面]
 categories: [Windows]
 category_bar: [Windows]
 date: 2023-05-17 17:06:29
+typora-root-url: ..
 ---
 
 # Windows 远程连接传输文件
