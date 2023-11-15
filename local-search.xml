@@ -4,6 +4,64 @@
   
   
   <entry>
+    <title>思索 2023.11.15</title>
+    <link href="/2023/11/15/%E6%80%9D%E7%B4%A2%202023.11.15/"/>
+    <url>/2023/11/15/%E6%80%9D%E7%B4%A2%202023.11.15/</url>
+    
+    <content type="html"><![CDATA[<h1 id="随心所欲不逾矩">随心所欲不逾矩</h1><p>生活需要一种节奏，有慢有快，有放松有紧张，有随心也有自律。</p><p>长久的放松不是真正的生活，而是一种放纵，只会愈发的感觉到空虚。</p><p>我常常在想，电子ED或者突如其来的空虚感，其实是一种焦虑，越是放纵的游戏，就越是空虚，这就是失去了生活的节奏。因为人对于愉悦的感知应该是指数性的，每一次愉悦到下一次愉悦都需要指数级的提升，而满足愉悦需求的阈值函数应该是一个类sigmoid的函数，这就导致不间断的刺激需要的阈值指数级增长，而进一步地导致空虚感的产生。</p><p>可能这就是为什么越是放纵越是空虚。</p><p>为此，我们需要调整自己的生活节奏，需要工作，需要适度的“痛苦”来调节自己的愉悦阈值，这也是高难度工作完成后满足感极强的一类原因吧。</p><p>古语讲：“随心所欲不逾矩”，个人理解，这里的随心所欲应该就是随心而动，认清自己的真实需求，不逾矩就是符合规则，有条理，有节律，对自我的欲望有管控。如此，才不会欲壑难填，沦为人性的奴隶。</p><p>故，需要让生活变得有计划，有节律，才能获得真正的享受，持续的享受，高级的享受。</p><p>第一次开始记录心路历程，希望日后回顾，能不带遗憾地说：“这里是我重新起航的地方，是我的人生第一次由自己掌托的时刻。”</p><blockquote><p>为岁月干杯！</p><p>另：芙芙可爱捏。</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>日志</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>思索</tag>
+      
+      <tag>记录，自律</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>COMSOL薄膜电容仿真</title>
+    <link href="/2023/06/25/COMSOL%E8%96%84%E8%86%9C%E7%94%B5%E5%AE%B9%E4%BB%BF%E7%9C%9F/"/>
+    <url>/2023/06/25/COMSOL%E8%96%84%E8%86%9C%E7%94%B5%E5%AE%B9%E4%BB%BF%E7%9C%9F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="comsol薄膜电容仿真">COMSOL薄膜电容仿真</h1><p>在RF等领域的芯片设计中，经常遇到平面电路的电容仿真等问题，这里以COMSOL为演示，作为一种ANSYSMaxwell模块的替代。</p><h2 id="环境">环境</h2><ul><li>Windows 11 专业版 22H2 22621.1848</li><li>AMD Ryzen 5 3600 6-Core Processor 3.60 GHz</li><li>16Gx4 3200MHz</li><li>COMSOL 6.1</li></ul><h2 id="gdsii">GDSII</h2><figure><img src="image-20230625150034672.png" alt="image-20230625150034672" /><figcaption aria-hidden="true">image-20230625150034672</figcaption></figure><h2 id="comsol">COMSOL</h2><h3 id="建立项目">建立项目</h3><p>点击<code>模型向导</code>,选择<code>三维</code></p><figure><img src="image-20230625150514334.png" alt="image-20230625150514334" /><figcaption aria-hidden="true">image-20230625150514334</figcaption></figure><figure><img src="image-20230625150542294.png" alt="image-20230625150542294" /><figcaption aria-hidden="true">image-20230625150542294</figcaption></figure><p>选择<code>AC/DC</code>分类中的<code>电场和电流</code>下的<code>静电(es)</code>物理场，点击<code>添加</code>物理场接口</p><figure><img src="image-20230625150840079.png" alt="image-20230625150840079" /><figcaption aria-hidden="true">image-20230625150840079</figcaption></figure><p>在研究面板中选择<code>一般研究</code>下的<code>稳态</code>，然后点击完成</p><figure><img src="image-20230625151009386.png" alt="image-20230625151009386" /><figcaption aria-hidden="true">image-20230625151009386</figcaption></figure><p>进入到如下所示项目主界面</p><figure><img src="image-20230625151259314.png" alt="image-20230625151259314" /><figcaption aria-hidden="true">image-20230625151259314</figcaption></figure><h3 id="构建模型">构建模型</h3><h4 id="导入gdsii">导入GDSII</h4><p><code>几何</code>-&gt;<code>导入</code>-&gt;<code>浏览</code>-&gt;选择需要导入的GDSII文件</p><figure><img src="image-20230625151544430.png" alt="image-20230625151544430" /><figcaption aria-hidden="true">image-20230625151544430</figcaption></figure><figure><img src="image-20230625151703196.png" alt="image-20230625151703196" /><figcaption aria-hidden="true">image-20230625151703196</figcaption></figure><p>修改厚度为需要仿真的厚度，这里选择100nm</p><blockquote><p><strong>TIPS</strong></p><p>如果需要导入多层图，勾选<code>手动控制高度</code>并设置好参数</p><p>对于存在多个图层的GDSII文件，建议勾选<code>按数据类型拆分</code>来导入具体的图层</p></blockquote><p>点击<code>构建选定对象</code>完成电容电路的模型构建</p><figure><img src="image-20230625152319370.png" alt="image-20230625152319370" /><figcaption aria-hidden="true">image-20230625152319370</figcaption></figure><h4 id="绘制衬底">绘制衬底</h4><p><code>几何</code>-&gt;<code>长方体</code></p><p>我们这里选择使用一块 500um x 500um x 450um 的长方体衬底</p><p>位置栏目下，基准选择<code>居中</code>，并填写对应的坐标，以确保衬底上表面与电路下表面正好接触</p><p>点击<code>构建选定对象</code>以生成模型，并点击右侧图形窗口中的<code>缩放到窗口大小</code>图标以缩放到合适大小</p><figure><img src="image-20230625152801832.png" alt="image-20230625152801832" /><figcaption aria-hidden="true">image-20230625152801832</figcaption></figure><blockquote><p><strong>TIPS</strong></p><p>对于比较复杂或者比较大的电路，建议扩大衬底以较好的近似真实情况</p></blockquote><h4 id="添加空气域">添加“空气域”</h4><p><code>几何</code>-&gt;<code>球体</code></p><p>设定好<code>半径</code>参数后，点击右侧图形窗口的对应按钮，设为线框渲染并缩放到窗口大小</p><figure><img src="image-20230625153636632.png" alt="image-20230625153636632" /><figcaption aria-hidden="true">image-20230625153636632</figcaption></figure><h3 id="添加材料">添加材料</h3><p><code>材料</code>-&gt;<code>空材料</code></p><p>修改标签为<code>pec</code>，手动去除掉不需要添加理想导体的域（<code>1</code>，<code>2</code>）,相对介电常数这里保持默认的各向同性设置，填写具体值为<code>1</code></p><figure><img src="image-20230625154128623.png" alt="image-20230625154128623" /><figcaption aria-hidden="true">image-20230625154128623</figcaption></figure><p>同理，我们给衬底加上相对介电常数为9.3的c-plane蓝宝石材料以及给“空气域”加上相对介电常数为1的真空材料</p><h3 id="设置物理场">设置物理场</h3><p>为了在后续仿真结果中提取Maxwell电容矩阵，我们需要给两块极板分别加上一个监测用的终端并设置静电场仿真的参数扫描</p><h4 id="添加域终端">添加域终端</h4><p><code>物理场</code>-&gt;<code>域</code>-&gt;<code>终端</code></p><p>在域选择栏目中，选择<code>LAYER1(导入1)</code>来快速选中两块极板，并手动去除其中一块的选择</p><p>修改终端类型为<code>电压</code></p><figure><img src="image-20230625155849037.png" alt="image-20230625155849037" /><figcaption aria-hidden="true">image-20230625155849037</figcaption></figure><p>类似地，再添加一个终端并在域选择中选中另一块极板</p><figure><img src="image-20230625160253046.png" alt="image-20230625160253046" /><figcaption aria-hidden="true">image-20230625160253046</figcaption></figure><blockquote><p><strong>TIPS</strong></p><p>对于多块极板间的Maxwell电容矩阵的提取，每块极板都需要设置一个对应的电压类型的终端</p><p>终端设置面板中的<code>终端名称</code>就是等下需要做参数扫描的值</p><p><code>终端类型</code>决定了提取的是Maxwell电容矩阵还是Maxwell逆电容矩阵</p></blockquote><h4 id="设置终端扫描">设置终端扫描</h4><p>在静电场仿真的设置面板中勾选使用<code>手动终端扫描</code>，并复制其自动生成的扫描参数名称（这里是<code>TerminalName</code>）</p><figure><img src="image-20230625160553666.png" alt="image-20230625160553666" /><figcaption aria-hidden="true">image-20230625160553666</figcaption></figure><p>然后在<code>全局定义</code>的<code>参数1</code>下面设置一个全局参数</p><figure><img src="image-20230625160757902.png" alt="image-20230625160757902" /><figcaption aria-hidden="true">image-20230625160757902</figcaption></figure><h3 id="划分计算网格">划分计算网格</h3><p>通常而言，我们可以点击<code>网格1</code>设置面板中的<code>全部构建</code>来使用物理场控制的默认网格，但是我们这里的模型几何尺寸比例过于极端，自动划分的体网格很容易在极板上产生低质量网格，影响场分布计算的准确度，但是对于估算的电容矩阵而言一般影响有限，这里还是演示一下如何进行手动划分网格。</p><p>我们整体的网格划分思路为对表面电路进行扫掠网格划分，对衬底和“空气域”采用自由四面体网格</p><p>这样可以给表面电路提供较精确的计算保证同时减少不必要的计算来提高计算速度</p><blockquote><p>高版本COMSOL求解器中还有自适应网格优化的设置，也可以考虑使用</p></blockquote><h4 id="添加边界网格划分">添加边界网格划分</h4><p><code>网格</code>-&gt;<code>边界</code>-&gt;<code>自由四边形网格</code></p><p>选中两块极板的上表面</p><figure><img src="image-20230625161911507.png" alt="image-20230625161911507" /><figcaption aria-hidden="true">image-20230625161911507</figcaption></figure><blockquote><p><strong>TIPS</strong></p><p>在右侧的图形窗口中，滚动滚轮可以实现鼠标对当前位置不同几何层的选择，依据窗口左上角的提示，即可选择上表面</p><figure><img src="image-20230625162046616.png" alt="image-20230625162046616" /><figcaption aria-hidden="true">image-20230625162046616</figcaption></figure></blockquote><p>右键<code>自由四边形网格1</code>添加两个<code>分布</code>节点用于手动控制网格的细化方案</p><p>以第一个分布为例，选择两块极板的上表面的长边，分布类型选择<code>预定义</code></p><p>单元数设置为<code>200</code>，单元大小比设置为<code>50</code>（可自行调整来绘制比较干净的网格，也可不使用分布节点而是通过大小节点来绘制）</p><p>增长率设置为<code>指数</code>，勾选<code>对称分布</code></p><figure><img src="image-20230625162953560.png" alt="image-20230625162953560" /><figcaption aria-hidden="true">image-20230625162953560</figcaption></figure><p>另一个分布选择四条短边，最后选择构建选定对象，我们就获得了一个边缘细化中间粗化的表面网格</p><h4 id="构建极板扫掠网格">构建极板扫掠网格</h4><p><code>网格</code>-&gt;<code>扫掠</code></p><p>域选择中，几何实体层设置为<code>域</code>，选择两块极板</p><p>源面选择两块极板的上表面，目标面选择两块极板的下表面</p><p>点击<code>构建选定对象</code>即可完成极板的扫掠网格构建（可以添加分布节点来调节扫掠的层数，这里由于网格父节点的设置，自动只创建了一层，不过计算精度应该是够用的）</p><figure><img src="image-20230625163542342.png" alt="image-20230625163542342" /><figcaption aria-hidden="true">image-20230625163542342</figcaption></figure><h4 id="剩余几何体自由四面体网格划分">剩余几何体自由四面体网格划分</h4><p><code>网格</code>-&gt; <code>自由四面体网格</code></p><p>默认的集合实体层选择的是<code>剩余部分</code>，保持默认即可</p><figure><img src="image-20230625164006696.png" alt="image-20230625164006696" /><figcaption aria-hidden="true">image-20230625164006696</figcaption></figure><p>点击<code>构建选定对象</code>，等网格构建完成</p><p>点击右侧图形窗口的<code>透明</code>图标，可以使得渲染半透明化，方便观察网格划分</p><p>右键<code>网格1</code>，选择<code>网格信息</code>可以查看网格划分的质量统计</p><figure><img src="image-20230625164554827.png" alt="image-20230625164554827" /><figcaption aria-hidden="true">image-20230625164554827</figcaption></figure><p>这里<code>自由四面体网格1</code>有信息子节点显示存在9个低质量单元，可以继续优化网格，但是我们先不管了。</p><figure><img src="image-20230625164722797.png" alt="image-20230625164722797" /><figcaption aria-hidden="true">image-20230625164722797</figcaption></figure><h3 id="设置研究">设置研究</h3><p><code>研究</code>-&gt; <code>参数化扫描</code></p><p>添加之前在全局参数中设置的终端扫描参数，参数值列表填写<code>1 2</code>，也就之前的终端名称</p><figure><img src="image-20230625165433756.png" alt="image-20230625165433756" /><figcaption aria-hidden="true">image-20230625165433756</figcaption></figure><h3 id="计算">计算</h3><p>点击研究左上角的计算即可开始仿真</p><figure><img src="image-20230625165844249.png" alt="image-20230625165844249" /><figcaption aria-hidden="true">image-20230625165844249</figcaption></figure><p>计算完成后会自动绘制电势图</p><figure><img src="image-20230625170113891.png" alt="image-20230625170113891" /><figcaption aria-hidden="true">image-20230625170113891</figcaption></figure><h4 id="提取maxwell电容矩阵">提取Maxwell电容矩阵</h4><p>右键<code>派生值</code>，选择<code>全局矩阵计算</code></p><p>数据集选择<code>研究1/参数化解 1(sol2)</code>，参数选择保持默认的<code>全部</code></p><p>在表达式中添加<code>es.C - 麦克斯韦电容 - F</code></p><figure><img src="image-20230625170538768.png" alt="image-20230625170538768" /><figcaption aria-hidden="true">image-20230625170538768</figcaption></figure><p>单位修改为<code>fF</code></p><p>点击<code>计算</code>，右下角即会出现表格展示出Maxwell电容矩阵</p><figure><img src="image-20230625170928396.png" alt="image-20230625170928396" /><figcaption aria-hidden="true">image-20230625170928396</figcaption></figure><p>可以得到</p><table><thead><tr class="header"><th>Maxwell电容矩阵</th><th>1</th><th>2</th></tr></thead><tbody><tr class="odd"><td>1</td><td>17.523</td><td>-17.523</td></tr><tr class="even"><td>2</td><td>-17.523</td><td>17.523</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>仿真</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Qubit</tag>
+      
+      <tag>超导量子计算</tag>
+      
+      <tag>COMSOL</tag>
+      
+      <tag>电容仿真</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>VSCodeJupyter的交互式绘图配置</title>
     <link href="/2023/06/16/VSCodeJupyter%E7%9A%84%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE%E9%85%8D%E7%BD%AE/"/>
     <url>/2023/06/16/VSCodeJupyter%E7%9A%84%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BB%98%E5%9B%BE%E9%85%8D%E7%BD%AE/</url>
